@@ -13,11 +13,11 @@ int y;
 Segment (int x,int y){
   
 this.x=x;
-this.x=x;
+this.y=y;
 
 
 }
-
+}
 
 //*
 // ***** GAME VARIABLES *****
@@ -25,10 +25,8 @@ this.x=x;
 //*
 Segment head;
 int foodX;
-int foddY;
-thishead=head;
-frameRate(20);
-dropFood();
+int foodY;
+
 
 
 
@@ -39,13 +37,15 @@ dropFood();
 
 void setup() {
 size (500,500);
-
+head=new Segment(125,250);
+frameRate(20);
+dropFood();
 }
 
 void dropFood() {
   //Set the food in a new random location
-  x = ((int)random(50)*10);
-  x = ((int)random(50)*10);
+  foodX = ((int)random(50)*10);
+  foodY = ((int)random(50)*10);
 
 
     
@@ -59,16 +59,22 @@ void dropFood() {
 //*
 
 void draw() {
-  setBackroundColor (250,0,0);
+  background (255,255,255);
+  drawFood();
+  drawSnake();
 }
 
 void drawFood() {
   //Draw the food
+  fill (255,0,0);
+  rect (foodX,foodY,10,10);
   
 }
 
 void drawSnake() {
   //Draw the head of the snake followed by its tail
+  fill (0,0,255);
+  rect ( head.x, head.y,10,10);
 }
 
 
