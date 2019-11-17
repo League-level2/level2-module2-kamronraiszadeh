@@ -26,7 +26,8 @@ this.y=y;
 Segment head;
 int foodX;
 int foodY;
-
+int direction = UP;
+int eat = 0;
 
 
 
@@ -68,12 +69,12 @@ void drawFood() {
   //Draw the food
   fill (255,0,0);
   rect (foodX,foodY,10,10);
-  
+  move();
 }
 
 void drawSnake() {
   //Draw the head of the snake followed by its tail
-  fill (0,0,255);
+  fill (0,255,0);
   rect ( head.x, head.y,10,10);
 }
 
@@ -107,33 +108,61 @@ void checkTailCollision() {
 //*
 
 void keyPressed() {
-  //Set the direction of the snake according to the arrow keys pressed
+if (key== CODED){
+ if (keyCode==UP){
+   direction = UP;
+ } 
+ if (keyCode== DOWN){
+   direction = DOWN;
+ } 
+ if (keyCode==RIGHT){
+   direction = RIGHT;
+ } 
+ if (keyCode==LEFT){
+   direction = LEFT;
+ } 
   
-}
 
+
+
+}
+}
 void move() {
   //Change the location of the Snake head based on the direction it is moving.
   
-    /*
+   
   switch(direction) {
   case UP:
-    // move head up here 
+     head.y--;
     break;
   case DOWN:
-    // move head down here 
+   head.y++;
     break;
   case LEFT:
-   // figure it out 
+   head.x--;
     break;
   case RIGHT:
-    // mystery code goes here 
+    head.x++;
     break;
   }
-  */
+  checkBoundaries();
 }
 
 void checkBoundaries() {
- //If the snake leaves the frame, make it reappear on the other side
+if (head.x>500){
+head.x=0;
+}
+if (head.x<0){
+head.x=500;
+}
+if (head.y>500);{
+head.y=0;
+}
+ if (head.y<0){
+head.y=500;  
+
+}
+
  
 }
 
