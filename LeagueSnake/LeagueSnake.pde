@@ -37,8 +37,8 @@ int eat = 0;
 //*
 
 void setup() {
-size (500,500);
-head=new Segment(125,250);
+size(500,500);
+head=new Segment(250,250);
 frameRate(20);
 dropFood();
 }
@@ -63,6 +63,7 @@ void draw() {
   background (255,255,255);
   drawFood();
   drawSnake();
+  eat();
 }
 
 void drawFood() {
@@ -77,7 +78,6 @@ void drawSnake() {
   fill (0,255,0);
   rect ( head.x, head.y,10,10);
 }
-
 
 //*
 // ***** TAIL MANAGEMENT METHODS *****
@@ -155,7 +155,7 @@ head.x=0;
 if (head.x<0){
 head.x=500;
 }
-if (head.y>500);{
+if (head.y>500){
 head.y=0;
 }
  if (head.y<0){
@@ -170,5 +170,8 @@ head.y=500;
 
 void eat() {
   //When the snake eats the food, its tail should grow and more food appear
-
+if (head.x==foodX&&head.y==foodX){
+  eat++;
+  dropFood();
+}
 }
