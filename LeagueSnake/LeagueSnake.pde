@@ -16,6 +16,7 @@ this.x=x;
 this.y=y;
 
 
+
 }
 }
 
@@ -40,7 +41,7 @@ ArrayList<Segment> tail = new ArrayList<Segment>();
 void setup() {
 size(500,500);
 head=new Segment(250,250);
-frameRate(20);
+frameRate(5);
 dropFood();
 }
 
@@ -65,6 +66,7 @@ void draw() {
   drawFood();
   drawSnake();
   eat();
+  
 }
 
 void drawFood() {
@@ -101,6 +103,7 @@ void manageTail() {
   drawTail();
   tail.add(new Segment(head. x,head.y));
   tail.remove(0);
+  
 }
 
 void checkTailCollision() {
@@ -143,16 +146,16 @@ void move() {
    
   switch(direction) {
   case UP:
-     head.y--;
+     head.y-=10;
     break;
   case DOWN:
-   head.y++;
+   head.y+=10;
     break;
   case LEFT:
-   head.x--;
+   head.x-=10;
     break;
   case RIGHT:
-    head.x++;
+    head.x+=10;
     break;
   }
   checkBoundaries();
