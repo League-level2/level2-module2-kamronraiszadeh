@@ -90,8 +90,8 @@ void drawSnake() {
 
 void drawTail() {
   //Draw each segment of the tail 
-for (int i=0; i<tail.size (); i++) {
- rect (head.x,head.y,10,10);
+for (Segment max:tail){
+rect (max.x,max.y,10,10);
 }
 
 }
@@ -108,9 +108,14 @@ void manageTail() {
 
 void checkTailCollision() {
   //If the snake crosses its own tail, shrink the tail back to one segment
-  int eat=1;
-  tail.clear();
+  for (Segment max:tail){
+if (head.x==max.x&&head.y==max.y){
+eat=1;
+  tail=new ArrayList();
   tail.add(new Segment(head.x,head.y));
+}
+}
+  
 }
 
 
@@ -183,7 +188,7 @@ head.y=500;
 
 void eat() {
   //When the snake eats the food, its tail should grow and more food appear
-if (head.x==foodX&&head.y==foodX){
+if (head.x==foodX&&head.y==foodY){
   eat++;
   dropFood();
   tail.add(new Segment(head.x,head.y));
